@@ -9,6 +9,13 @@ elif [[ -x /usr/local/bin/brew ]]; then
     eval "$(/usr/local/bin/brew shellenv)"
 fi
 
+# Dock appearance
+defaults write com.apple.dock tilesize -int 36
+defaults write com.apple.dock magnification -bool false
+defaults write com.apple.dock mineffect -string "scale"
+defaults write com.apple.dock orientation -string "bottom"
+defaults write com.apple.dock autohide -bool false
+
 add_if_exists() {
     local app_path="$1"
     if [[ -d "$app_path" ]]; then
