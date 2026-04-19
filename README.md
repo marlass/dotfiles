@@ -32,3 +32,4 @@ These can't be (or aren't worth) scripting — do each once per machine after th
 
 - **Default browser** — System Settings → Desktop & Dock → Default web browser → **Google Chrome**.
 - **1Password** — launch the app, sign in, then Settings → Developer → enable **"Integrate with 1Password CLI"** (and optionally "Use Touch ID to unlock the 1Password app"). Required before any `chezmoi` template or script that reads secrets can work.
+- **Raycast** — launch and import settings from 1Password.
