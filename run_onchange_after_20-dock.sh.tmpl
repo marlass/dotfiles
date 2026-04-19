@@ -1,0 +1,33 @@
+#!/usr/bin/env bash
+# Profile: {{ .profile }}
+
+set -euo pipefail
+
+if [[ -x /opt/homebrew/bin/brew ]]; then
+    eval "$(/opt/homebrew/bin/brew shellenv)"
+elif [[ -x /usr/local/bin/brew ]]; then
+    eval "$(/usr/local/bin/brew shellenv)"
+fi
+
+add_if_exists() {
+    local app_path="$1"
+    if [[ -d "$app_path" ]]; then
+        dockutil --add "$app_path" --no-restart
+    else
+        echo "Warning: $app_path not found, skipping"
+    fi
+}
+
+dockutil --remove all --no-restart
+
+{{ if eq .profile "work" -}}
+add_if_exists "/Applications/Slack.app"
+{{ end -}}
+{{ if eq .profile "personal" -}}
+add_if_exists "/Applications/Signal.app"
+{{ end -}}
+add_if_exists "/Applications/Spotify.app"
+add_if_exists "/Applications/Google Chrome.app"
+add_if_exists "/Applications/Roam Research.app"
+
+killall Dock
