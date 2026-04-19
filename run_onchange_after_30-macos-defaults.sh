@@ -10,8 +10,19 @@ defaults write com.apple.finder FXPreferredViewStyle -string "Nlsv"
 defaults write com.apple.finder NewWindowTarget -string "PfHm"
 defaults write com.apple.finder NewWindowTargetPath -string "file://${HOME}/"
 defaults write com.apple.finder FXDefaultSearchScope -string "SCcf"
+defaults write com.apple.finder QuitMenuItem -bool true
+defaults write com.apple.finder _FXSortFoldersFirst -bool true
+defaults write com.apple.finder FXEnableExtensionChangeWarning -bool false
 defaults write com.apple.desktopservices DSDontWriteNetworkStores -bool true
 defaults write com.apple.desktopservices DSDontWriteUSBStores -bool true
+chflags nohidden "${HOME}/Library"
+
+# ── Typing ────────────────────────────────────────────────────────────────
+defaults write NSGlobalDomain NSAutomaticQuoteSubstitutionEnabled -bool false
+defaults write NSGlobalDomain NSAutomaticDashSubstitutionEnabled -bool false
+defaults write NSGlobalDomain NSAutomaticPeriodSubstitutionEnabled -bool false
+defaults write NSGlobalDomain NSAutomaticCapitalizationEnabled -bool false
+defaults write NSGlobalDomain NSAutomaticSpellingCorrectionEnabled -bool false
 
 # ── Input ─────────────────────────────────────────────────────────────────
 defaults write NSGlobalDomain com.apple.swipescrolldirection -bool false
@@ -36,8 +47,19 @@ defaults write NSGlobalDomain NSNavPanelExpandedStateForSaveMode2 -bool true
 defaults write NSGlobalDomain PMPrintingExpandedStateForPrint -bool true
 defaults write NSGlobalDomain PMPrintingExpandedStateForPrint2 -bool true
 
+# ── System ────────────────────────────────────────────────────────────────
+# Require password immediately after sleep / screensaver
+defaults write com.apple.screensaver askForPassword -int 1
+defaults write com.apple.screensaver askForPasswordDelay -int 0
+# Always show scrollbars
+defaults write NSGlobalDomain AppleShowScrollBars -string "Always"
+# Speed up animations
+defaults write com.apple.dock expose-animation-duration -float 0.1
+defaults write NSGlobalDomain NSWindowResizeTime -float 0.001
+
 # ── Apply ─────────────────────────────────────────────────────────────────
 killall Finder || true
+killall Dock || true
 killall SystemUIServer || true
 killall ControlCenter || true
 
