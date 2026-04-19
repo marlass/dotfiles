@@ -11,7 +11,7 @@ setopt HIST_IGNORE_ALL_DUPS HIST_IGNORE_SPACE HIST_VERIFY INC_APPEND_HISTORY SHA
 if [[ -n "$HOMEBREW_PREFIX" ]]; then
     FPATH="$HOMEBREW_PREFIX/share/zsh-completions:$HOMEBREW_PREFIX/share/zsh/site-functions:$FPATH"
 fi
-autoload -Uz compinit && compinit
+autoload -Uz compinit && compinit -i
 
 # ── Plugins (order matters: syntax-highlighting must be last) ────────────
 if [[ -n "$HOMEBREW_PREFIX" ]]; then
