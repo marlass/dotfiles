@@ -1,0 +1,11 @@
+# https://starship.rs/config/
+
+# Show duration for commands slower than 500ms (default 2000)
+[cmd_duration]
+min_time = 500
+format = "took [$duration]($style) "
+
+# Truncate directory to 3 parent dirs; show full path inside a repo
+[directory]
+truncation_length = 3
+truncate_to_repo = true
