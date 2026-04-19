@@ -1,0 +1,18 @@
+# Formulae (CLI)
+# (none yet)
+
+# Casks (GUI apps)
+cask "1password"
+cask "google-chrome"
+cask "spotify"
+cask "zed"
+cask "roam-research"
+
+{{ if eq .profile "personal" -}}
+cask "signal"
+{{- end }}
+{{ if eq .profile "work" -}}
+cask "slack"
+cask "linear-linear"
+cask "tuple"
+{{- end }}
