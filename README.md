@@ -31,5 +31,14 @@ Pulls the latest source and re-applies. Safe to run repeatedly.
 These can't be (or aren't worth) scripting — do each once per machine after the first apply.
 
 - **Default browser** — System Settings → Desktop & Dock → Default web browser → **Google Chrome**.
-- **1Password** — launch the app, sign in, then Settings → Developer → enable **"Integrate with 1Password CLI"** (and optionally "Use Touch ID to unlock the 1Password app"). Required before any `chezmoi` template or script that reads secrets can work.
+- **1Password** — launch the app, sign in, then Settings → Developer → enable:
+  - **Integrate with 1Password CLI** — required before any `chezmoi` template or script that reads secrets can work.
+  - **Use the SSH agent** — makes 1Password serve SSH keys for auth (git clone, ssh host) and commit signing. Pairs with `~/.ssh/config` already deployed.
+  - Optionally **Use Touch ID to unlock the 1Password app**.
+
+  After enabling, add public keys to GitHub / other services via each SSH Key item's "Copy public key" in 1Password.
 - **Raycast** — launch and import settings from 1Password.
+- **Google Chrome** login (two factor via mobile app as 1p extension is not yet installed) and sync settings there. Authorize extensions (Refined Github, 1Password)
+- **Spotify** login (easiest via mobile app)
+- **Slack** login
+- **Signal** login

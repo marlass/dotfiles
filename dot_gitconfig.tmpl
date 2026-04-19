@@ -1,3 +1,14 @@
+{{- $identityVault := ternary "Employee" "Shared with work" (eq .profile "work") -}}
+{{- $signingVault  := ternary "Employee" "Private"          (eq .profile "work") -}}
+{{- $emailField    := ternary "work_email" "personal_email" (eq .profile "work") -}}
+[user]
+        name       = {{ onepasswordRead (printf "op://%s/Git Identity/name"          $identityVault)             | quote }}
+        email      = {{ onepasswordRead (printf "op://%s/Git Identity/%s"            $identityVault $emailField) | quote }}
+        signingkey = {{ onepasswordRead (printf "op://%s/Signing Key/public key"     $signingVault)              | quote }}
+[gpg]
+        format = ssh
+[gpg "ssh"]
+        program = /Applications/1Password.app/Contents/MacOS/op-ssh-sign
 [column]
         ui = auto
 [branch]
@@ -21,6 +32,7 @@
         autocorrect = prompt
 [commit]
         verbose = true
+        gpgsign = true
 [rerere]
         enabled = true
         autoupdate = true
