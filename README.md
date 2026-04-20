@@ -18,6 +18,17 @@ Managed with [chezmoi](https://chezmoi.io).
 
 On first run you'll be asked to pick a profile (`personal` or `work`).
 
+## First apply on a fresh Mac
+
+The bootstrap one-liner runs `chezmoi apply` automatically. A few things need manual intervention during or after that first run:
+
+- **Work profile only:** the Determinate Nix installer runs early and prompts for your macOS password (sudo). Expected.
+- **`~/.gitconfig` will fail to render** until 1Password is signed in with CLI integration enabled (see [Manual setup steps](#manual-setup-steps)). Complete those, then re-run:
+
+  ```sh
+  chezmoi apply
+  ```
+
 ## Updating
 
 ```sh
