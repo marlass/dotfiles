@@ -9,3 +9,9 @@ format = "took [$duration]($style) "
 [directory]
 truncation_length = 3
 truncate_to_repo = true
+
+[package]
+disabled = true
+
+[erlang]
+disabled = true
