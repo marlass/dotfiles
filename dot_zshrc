@@ -30,6 +30,8 @@ bindkey "^[[A" up-line-or-beginning-search
 bindkey "^[[B" down-line-or-beginning-search
 
 # ── Integrations ──────────────────────────────────────────────────────────
+# Suppress devbox's `(devbox)` prompt prefix (nix_shell starship module covers it)
+export DEVBOX_NO_PROMPT=1
 command -v direnv &>/dev/null && eval "$(direnv hook zsh)"
 command -v starship &>/dev/null && eval "$(starship init zsh)"
 command -v fzf &>/dev/null && source <(fzf --zsh)

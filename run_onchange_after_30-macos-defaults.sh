@@ -51,6 +51,9 @@ defaults write NSGlobalDomain PMPrintingExpandedStateForPrint2 -bool true
 defaults write NSGlobalDomain AppleInterfaceStyle -string "Dark"
 defaults delete NSGlobalDomain AppleInterfaceStyleSwitchesAutomatically 2>/dev/null || true
 
+# ── Locale / time ─────────────────────────────────────────────────────────
+defaults write NSGlobalDomain AppleICUForce24HourTime -bool true
+
 # ── System ────────────────────────────────────────────────────────────────
 # Require password immediately after sleep / screensaver
 defaults write com.apple.screensaver askForPassword -int 1
