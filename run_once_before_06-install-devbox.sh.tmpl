@@ -1,0 +1,12 @@
+#!/usr/bin/env bash
+# Profile: {{ .profile }}
+set -euo pipefail
+
+{{ if eq .profile "work" -}}
+if command -v devbox >/dev/null 2>&1; then
+    echo "devbox already installed, skipping"
+    exit 0
+fi
+
+curl -fsSL https://get.jetify.com/devbox | bash -s -- -f
+{{- end }}
