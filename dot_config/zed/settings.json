@@ -15,6 +15,10 @@
       "type": "registry"
     }
   },
+  "auto_install_extensions": {
+    "comment": true,
+    "html": true
+  },
   "multi_cursor_modifier": "cmd_or_ctrl",
   "sticky_scroll": {
     "enabled": true
