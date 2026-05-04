@@ -28,8 +28,11 @@ cask "font-jetbrains-mono-nerd-font"
 cask "signal"
 {{- end }}
 {{ if eq .profile "work" -}}
+brew "kustomize"
+brew "sops"
 cask "slack"
-cask "linear-linear"
+cask "linear"
 cask "tuple"
 cask "tailscale-app"
+cask "gcloud-cli"
 {{- end }}
