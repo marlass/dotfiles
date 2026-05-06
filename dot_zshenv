@@ -1,0 +1,25 @@
+# ── Stale ZDOTDIR guard ───────────────────────────────────────────────────
+#
+# Problem:
+#   `devbox shell` sets ZDOTDIR to a temporary directory it generates per
+#   session. If a GUI app (Zed in particular) is launched from inside that
+#   devbox shell — or auto-restored after one — the app inherits the env
+#   var. The temp directory is later cleaned up, but Zed's process keeps
+#   the now-stale ZDOTDIR forever, and every terminal pane it spawns
+#   forks from that env.
+#
+#   When zsh starts with ZDOTDIR pointing at a missing directory, it looks
+#   for ~/.zshrc *there*, finds nothing, and silently skips it. Result:
+#   the real ~/.zshrc never runs, no plugins, no starship, no aliases.
+#
+# Fix:
+#   Unset ZDOTDIR if it points at a directory we cannot read a .zshrc
+#   from. This only triggers when the path is broken — a legitimate
+#   `devbox shell` (where the temp dir exists and contains a .zshrc)
+#   passes through untouched.
+#
+# Why .zshenv:
+#   .zshenv is sourced for every zsh invocation, before .zshrc. It is the
+#   only startup file that can repair ZDOTDIR in time to affect where
+#   zsh looks for .zshrc.
+[[ -n $ZDOTDIR && ! -r $ZDOTDIR/.zshrc ]] && unset ZDOTDIR
