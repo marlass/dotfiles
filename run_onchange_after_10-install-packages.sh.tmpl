@@ -11,4 +11,6 @@ elif [[ -x /usr/local/bin/brew ]]; then
 fi
 
 export HOMEBREW_CASK_OPTS="--no-quarantine"
+# docker/tap is non-official; trust it so `brew bundle` can load sbx non-interactively
+brew trust --tap docker/tap
 brew bundle --file="$HOME/.Brewfile"

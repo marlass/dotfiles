@@ -1,4 +1,5 @@
 tap "1password/tap"
+tap "docker/tap"
 
 # Formulae (CLI)
 brew "dockutil"
@@ -10,6 +11,9 @@ brew "zsh-completions"
 brew "gh"
 
 # Casks (GUI apps)
+# sbx: Docker Sandboxes CLI (AI-agent sandboxing); needs `brew trust --tap docker/tap`,
+# handled in run_onchange_after_10-install-packages.sh.tmpl
+cask "sbx"
 cask "1password"
 cask "1password-cli"
 cask "raycast"
